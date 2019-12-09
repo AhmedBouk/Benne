@@ -43,9 +43,9 @@ class Dumpster
     private $upload;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="geometry", options={"geometry_type"="POINT"})
      */
-    private $coordinates = [];
+    private $coordinates;
 
     /**
      * @ORM\Column(type="datetime")

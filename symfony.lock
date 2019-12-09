@@ -78,6 +78,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "jsor/doctrine-postgis": {
+        "version": "v1.7.0"
+    },
     "nikic/php-parser": {
         "version": "v4.3.0"
     },

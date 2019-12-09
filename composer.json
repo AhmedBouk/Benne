@@ -5,6 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "jsor/doctrine-postgis": "^1.7",
         "ramsey/uuid": "^3.9",
         "symfony/console": "5.0.*",
         "symfony/dotenv": "5.0.*",
