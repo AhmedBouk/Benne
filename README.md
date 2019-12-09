@@ -33,4 +33,5 @@ Dependencies/Bundles used :
  - [ramsey/uuid](https://github.com/ramsey/uuid)
  - [zircote/swagger-php](https://github.com/zircote/swagger-php)
  - [lexik/LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle)
+ - [jsor/doctrine-postgis](https://github.com/jsor/doctrine-postgis)
 
