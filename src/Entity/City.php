@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +47,16 @@ class City
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Dumpster", mappedBy="id_city")
+     */
+    private $id_dumpster;
+
+    public function __construct()
+    {
+        $this->id_dumpster = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +131,37 @@ class City
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Dumpster[]
+     */
+    public function getIdDumpster(): Collection
+    {
+        return $this->id_dumpster;
+    }
+
+    public function addIdDumpster(Dumpster $idDumpster): self
+    {
+        if (!$this->id_dumpster->contains($idDumpster)) {
+            $this->id_dumpster[] = $idDumpster;
+            $idDumpster->setIdCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdDumpster(Dumpster $idDumpster): self
+    {
+        if ($this->id_dumpster->contains($idDumpster)) {
+            $this->id_dumpster->removeElement($idDumpster);
+            // set the owning side to null (unless already changed)
+            if ($idDumpster->getIdCity() === $this) {
+                $idDumpster->setIdCity(null);
+            }
+        }
 
         return $this;
     }

@@ -46,6 +46,11 @@ class Collection
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Dumpster")
+     */
+    private $id_dumpster;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Collection
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getIdDumpster(): ?Dumpster
+    {
+        return $this->id_dumpster;
+    }
+
+    public function setIdDumpster(?Dumpster $id_dumpster): self
+    {
+        $this->id_dumpster = $id_dumpster;
 
         return $this;
     }

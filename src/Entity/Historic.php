@@ -41,6 +41,11 @@ class Historic
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $id_user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Historic
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->id_user;
+    }
+
+    public function setIdUser(?User $id_user): self
+    {
+        $this->id_user = $id_user;
 
         return $this;
     }

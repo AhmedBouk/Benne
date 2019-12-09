@@ -56,6 +56,11 @@ class Dumpster
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="id_dumpster")
+     */
+    private $id_city;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class Dumpster
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getIdCity(): ?City
+    {
+        return $this->id_city;
+    }
+
+    public function setIdCity(?City $id_city): self
+    {
+        $this->id_city = $id_city;
 
         return $this;
     }
