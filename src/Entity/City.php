@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 class City
 {
     /**
+     * @var \Ramsey\Uuid\UuidInterface
+     *
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
@@ -57,9 +61,11 @@ class City
     public function __construct()
     {
         $this->id_dumpster = new ArrayCollection();
-    }
+        $this->id = Uuid::uuid4();
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+}
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }

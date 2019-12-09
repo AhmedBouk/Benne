@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserDumpsterRepository")
@@ -10,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 class UserDumpster
 {
     /**
+     * @var \Ramsey\Uuid\UuidInterface
+     *
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
@@ -27,7 +31,13 @@ class UserDumpster
      */
     private $id_dumpster;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = Uuid::uuid4();
+        $this->created_at = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+    }
+
+    public function getId()
     {
         return $this->id;
     }
