@@ -20,6 +20,10 @@ Get the project :
 
     git clone git@github.com:AhmedBouk/Benne.git
 
+Create an .env.local, add your database URL. It look like this : 
+
+    DATABASE_URL=postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=11&charset=utf8
+
 Launch Symfony with the following command :
 
 ## Complementary Informations :
