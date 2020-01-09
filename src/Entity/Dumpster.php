@@ -138,7 +138,7 @@ class Dumpster
         return $this;
     }
 
-    public function getCoordinates(): ?array
+    public function getCoordinates()
     {
         return $this->coordinates;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Dumpster;
@@ -32,7 +33,10 @@ class BinController extends AbstractController
         $dumpster->setType('typeTest');
         $dumpster->setIsEnabled(1);
         $dumpster->setStatus('testStatus');
-        $dumpster->setCoordinates(['']);
+        $dumpster->setCoordinates('POINT(37.4220761 -122.0845187)');
+        $entityManager->persist($dumpster);
+        $entityManager->flush();
+        return new Response('Saved new client with id '.$dumpster->getId());
 
 
     }
