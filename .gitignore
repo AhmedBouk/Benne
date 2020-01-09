@@ -169,9 +169,11 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,macos,windows,phpstorm
+.idea
 .idea/Benne.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/php.xml
 .idea/vcs.xml
 .idea/discord.xml
+.idea/composerJson.xml
