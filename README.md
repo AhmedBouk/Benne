@@ -26,6 +26,8 @@ Create an .env.local, add your database URL. It look like this :
 
 Launch Symfony with the following command :
 
+    php -S localhost:8000 -t public
+
 ## Complementary Informations :
 Dependencies/Bundles used :
 
