@@ -143,7 +143,7 @@ class Dumpster
         return $this->coordinates;
     }
 
-    public function setCoordinates(array $coordinates): self
+    public function setCoordinates($coordinates): self
     {
         $this->coordinates = $coordinates;
 

@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Dumpster;
+use Symfony\Component\HttpFoundation\Response;
 
 class BinController extends AbstractController
 {
