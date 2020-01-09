@@ -177,3 +177,8 @@ $RECYCLE.BIN/
 .idea/vcs.xml
 .idea/discord.xml
 .idea/composerJson.xml
+
+uploads
+uploads/*
+config/secrets/dev/
+uploads/
