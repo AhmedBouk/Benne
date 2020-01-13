@@ -13,6 +13,7 @@
         "symfony/framework-bundle": "5.0.*",
         "symfony/orm-pack": "^1.0",
         "symfony/yaml": "5.0.*",
+        "ext-json": "*",
       "ext-http": "*"
     },
     "require-dev": {
@@ -63,5 +64,5 @@
             "allow-contrib": false,
             "require": "5.0.*"
         }
-    }
+    },
 }
