@@ -25,7 +25,7 @@ class BinController extends AbstractController
     /**
      * @Route("/add_bin", name="add_bin")
      */
-    public function addBin() : Response
+    public function addBin(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -37,29 +37,19 @@ class BinController extends AbstractController
         $dumpster->setCoordinates('POINT(37.4220761 -122.0845187)');
         $entityManager->persist($dumpster);
         $entityManager->flush();
-        return new Response('Saved new client with id '.$dumpster->getId());
+        return new Response('Saved new client with id ' . $dumpster->getId());
     }
-
-    /**
-     * @Route("json_to_object", name="json_to_object")
-     */
-    public function JSONtoObject()
-    {
-        $string = file_get_contents('../uploads/benneMontpellier.json');
-
-        $jsonInArray = json_decode($string, true);
-    }
-
-
 
     /**
      * @Route("/add_json_to_database", name="add_json_to_database")
      */
-    public function addJSONtoDatabase():Response
+    //Misses duplicates protection in DB
+    public function addJSONtoDatabase()
     {
         $string = file_get_contents('../uploads/benneMontpellier.json');
-        $jsonInArray = json_decode($string, true);
-        $bins = $jsonInArray['features'];
+        $json = json_decode($string, true);
+        $obj = $json['features'];
+        $count = count($obj);
 
         $error = array(
             "type" => 0,
@@ -67,36 +57,43 @@ class BinController extends AbstractController
             "coordinates" => 0,
         );
 
-        foreach($bins as $json) {
+        for ($i = 0; $i < $count; $i++) {
+            $type = $obj[$i]['properties']['type'];
+            $address = $obj[$i]['properties']['rue'];
+            $latitude = $obj[$i]['geometry']['coordinates']['0'];
+            $longitude = $obj[$i]['geometry']['coordinates']['1'];
             $entityManager = $this->getDoctrine()->getManager();
-
             $dumpster = new Dumpster();
 
-            if(!empty($json{'properties'}{'type'}) && is_string($json{'properties'}{'type'})){
-                $dumpster->setType($json['properties']['type']);
-            }else{
+            if (!empty($type) && is_string($type)) {
+                $dumpster->setType($type);
+            } else {
                 $error['type']++;
             }
-            if(!empty($json{'properties'}{'rue'}) && is_string($json{'properties'}{'rue'})){
-                $dumpster->setName($json['properties']['rue']);
-            }else{
+            if (!empty($address) && is_string($address)) {
+                $dumpster->setName($address);
+            } else {
                 $error['name']++;
             }
-            if(!empty($json{'geometry'}{'coordinates'}['0']) && !empty($json{'geometry'}{'coordinates'}['0'])){
-                $dumpster->setCoordinates('POINT(' . $json["geometry"]["coordinates"]["0"] . ' ' . $json["geometry"]["coordinates"]["1"] . ')');
-            }else{
+            if (!empty($latitude) && !empty($longitude)) {
+                $dumpster->setCoordinates('POINT(' . $latitude . ' ' . $longitude . ')');
+            } else {
                 $error['coordinates']++;
             }
             $dumpster->setStatus('testStatus');
             $dumpster->setIsEnabled(1);
 
-            $em = $dumpster->getCoordinates();
-            print_r($em);
+            $dumpsters = $this->getDoctrine()->getRepository(Dumpster::class)->findDumpsterByCoos($latitude, $longitude);
 
-            $entityManager->persist($dumpster);
-            $entityManager->flush();
-
+            if($dumpsters){
+                echo 'error';
+            }else {
+                $entityManager->persist($dumpster);
+                $entityManager->flush();
+            }
         }
-        return new JsonResponse($jsonInArray{'features'}, Response::HTTP_CREATED);
+        return new Response("j'aime les chips");
     }
 }
+
+

@@ -19,6 +19,30 @@ class DumpsterRepository extends ServiceEntityRepository
         parent::__construct($registry, Dumpster::class);
     }
 
+
+    public function findDumpsterByCoos($latitude, $longitude){
+        $query = $this->createQueryBuilder('a')
+            ->where("Geography(ST_Point(:val, :val2)) = a.coordinates")
+            ->setParameter(':val', $latitude)
+            ->setParameter(':val2', $longitude);
+        return $query->getQuery()->getResult();
+    }
+
+
+    public function nextTo($pts1, $pts2)
+    {
+        $rayon = 2000;
+        $query = $this->createQueryBuilder('b')
+            ->where("ST_DWithin(b.coordinates, Geography(ST_SetSRID(ST_Point(:val,:val2),4326)), :val3) = true")
+            ->setParameter(':val', $pts1)
+            ->setParameter(':val2', $pts2)
+            ->setParameter(':val3',$rayon)
+
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
     // /**
     //  * @return Dumpster[] Returns an array of Dumpster objects
     //  */
