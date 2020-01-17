@@ -140,7 +140,10 @@ class Dumpster
 
     public function getCoordinates()
     {
-        return $this->coordinates;
+        $cooSRID = $this->coordinates;
+        $coo = substr($cooSRID, 16, -1); // remove SRID
+        $gps = str_replace(' ', ', ',$coo); //replace space with coma
+        return $gps;
     }
 
     public function setCoordinates($coordinates): self
