@@ -25,9 +25,9 @@ class DumpsterController extends AbstractController
         $this->dumpsterRepository = $DumpsterRepository;
     }
 
-    /* =====================================
-       Adds uploaded JSON File to database
-    ====================================== */
+/* =====================================
+   Adds uploaded JSON File to database
+====================================== */
     /**
      * @Route("/add_json", name="add_json", methods={"POST"})
      */
@@ -79,7 +79,7 @@ class DumpsterController extends AbstractController
                 $entityManager->flush();
             }
         }
-        return new Response("Json bien ajouté à la BDD(j'aime les chips)");
+        return new Response("Json bien ajouté à la BDD");
     }
 
 /* ==============================================
@@ -110,7 +110,7 @@ class DumpsterController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }else{
-            $response = new JsonResponse(['status' => "Va niquer ta douce daronne les data sont vides"], Response::HTTP_OK);
+            $response = new JsonResponse(['status' => "data empty"], Response::HTTP_OK);
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }
@@ -237,7 +237,7 @@ class DumpsterController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }else{
-            $response = new JsonResponse(['status' => "Va niquer ta douce daronne les data sont vides"], Response::HTTP_OK);
+            $response = new JsonResponse(['status' => "Data empty"], Response::HTTP_OK);
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }
