@@ -22,7 +22,7 @@ class UserDumpster
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Users.php")
      */
     private $id_user;
 
@@ -42,12 +42,12 @@ class UserDumpster
         return $this->id;
     }
 
-    public function getIdUser(): ?User
+    public function getIdUser(): ?Users
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?User $id_user): self
+    public function setIdUser(?Users $id_user): self
     {
         $this->id_user = $id_user;
 

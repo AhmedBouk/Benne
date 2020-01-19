@@ -5,7 +5,7 @@ security:
                 class: 'App\Entity\User'
                 property: 'mail'
     encoders:
-        App\Entity\Admin:
+        App\Entity\User:
             algorithm: auto
 
     firewalls:
