@@ -26,7 +26,7 @@ class UsersFixtures extends Fixture
             $admin_user,
             'admin'
         ));
-        $admin_user->setRoles('ROLE_SUPER_ADMIN');
+        $admin_user->setRole('ROLE_SUPER_ADMIN');
         $admin_user->setIsEnabled(1);
         $admin_user->setToken('tokendesesmorts');
         $manager->persist($admin_user);
@@ -37,7 +37,7 @@ class UsersFixtures extends Fixture
             $classic_user,
             'user'
         ));
-        $classic_user->setRoles('ROLE_USER');
+        $classic_user->setRole('ROLE_USER');
         $classic_user->setIsEnabled(1);
         $classic_user->setToken('tokendesesmorts');
         $manager->persist($classic_user);

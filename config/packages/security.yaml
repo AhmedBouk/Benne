@@ -26,8 +26,8 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
-        classic:
-            anonymous: ~
+        #classic:
+           # anonymous: ~
             #guard:
                 #authenticators:
                     #- App\Security\LoginFormAuthenticator

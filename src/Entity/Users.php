@@ -35,7 +35,7 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $roles;
+    private $role;
 
     /**
      * @ORM\Column(type="boolean")
@@ -93,14 +93,14 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRole(): ?string
     {
-        return $this->roles;
+        return $this->role;
     }
 
-    public function setRoles(string $roles): self
+    public function setRole(string $role): self
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }
@@ -154,7 +154,7 @@ class Users implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * @see UserInterface
      */
     public function getSalt()
     {
@@ -162,7 +162,7 @@ class Users implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * @see UserInterface
      */
     public function getUsername()
     {
@@ -170,10 +170,20 @@ class Users implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * @return array|string[]
+     * @see UserInterface
      */
+    public function getRoles()
+    {
+        if (empty($roles)) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        return array_unique($roles);
+    }
+
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        return null;
     }
 }
