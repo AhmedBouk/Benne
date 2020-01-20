@@ -403,6 +403,7 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
+<<<<<<< HEAD
             "version": "2.0.7",
             "source": {
                 "type": "git",
@@ -413,6 +414,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/6926771140ee87a823c3b2c72602de9dda4490d3",
                 "reference": "6926771140ee87a823c3b2c72602de9dda4490d3",
+=======
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineBundle.git",
+                "reference": "0ef972d3b730f975c80db9fffa4b2a0258c91442"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/0ef972d3b730f975c80db9fffa4b2a0258c91442",
+                "reference": "0ef972d3b730f975c80db9fffa4b2a0258c91442",
+>>>>>>> develop
                 "shasum": ""
             },
             "require": {
@@ -491,7 +504,11 @@
                 "orm",
                 "persistence"
             ],
+<<<<<<< HEAD
             "time": "2020-01-18T11:56:15+00:00"
+=======
+            "time": "2019-12-19T13:47:07+00:00"
+>>>>>>> develop
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -3041,6 +3058,7 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "time": "2019-12-19T18:35:03+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "symfony/inflector",
@@ -3099,6 +3117,8 @@
                 "words"
             ],
             "time": "2019-11-18T17:27:11+00:00"
+=======
+>>>>>>> develop
         },
         {
             "name": "symfony/mime",

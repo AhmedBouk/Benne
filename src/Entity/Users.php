@@ -10,7 +10,11 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
+<<<<<<< HEAD:src/Entity/Users.php
 class Users implements UserInterface
+=======
+class Users
+>>>>>>> develop:src/Entity/User.php
 {
     /**
      * @var \Ramsey\Uuid\UuidInterface

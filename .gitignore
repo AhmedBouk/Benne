@@ -177,6 +177,14 @@ $RECYCLE.BIN/
 .idea/vcs.xml
 .idea/discord.xml
 .idea/composerJson.xml
+<<<<<<< HEAD
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+=======
+
+uploads
+uploads/*
+config/secrets/dev/
+uploads/
+>>>>>>> develop
