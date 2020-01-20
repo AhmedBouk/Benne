@@ -47,7 +47,7 @@ class Historic
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
      */
     private $id_user;
 

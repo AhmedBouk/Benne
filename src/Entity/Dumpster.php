@@ -47,7 +47,7 @@ class Dumpster
     private $upload;
 
     /**
-     * @ORM\Column(type="geometry", options={"geometry_type"="POINT"})
+     * @ORM\Column(type="geography", options={"geometry_type"="POINT"})
      */
     private $coordinates;
 

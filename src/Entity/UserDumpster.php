@@ -22,7 +22,7 @@ class UserDumpster
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Users.php")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
      */
     private $id_user;
 
