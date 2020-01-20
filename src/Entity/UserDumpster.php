@@ -22,7 +22,11 @@ class UserDumpster
     private $id;
 
     /**
+<<<<<<< HEAD
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+=======
      * @ORM\ManyToOne(targetEntity="Users")
+>>>>>>> develop
      */
     private $id_user;
 

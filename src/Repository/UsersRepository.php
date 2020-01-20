@@ -13,23 +13,41 @@ use Doctrine\ORM\EntityManagerInterface;
  * @method Users[]    findAll()
  * @method Users[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository
+class UsersRepository extends ServiceEntityRepository
 {
+<<<<<<< HEAD:src/Repository/UsersRepository.php
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Users::class);
+    }
+
+    // /**
+    //  * @return Users[] Returns an array of Users objects
+    //  */
+    /*
+    public function findByExampleField($value)
+=======
     /**
      * @var EntityManagerInterface
      */
     private $manager;
 
     public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
+>>>>>>> develop:src/Repository/UserRepository.php
     {
         parent::__construct($registry, Users::class);
         $this->manager = $manager;
     }
 
+<<<<<<< HEAD:src/Repository/UsersRepository.php
+    /*
+    public function findOneBySomeField($value): ?Users
+=======
     /* =============
        Adds Users
     ============== */
     public function addUser($mail, $password, $role, $token)
+>>>>>>> develop:src/Repository/UserRepository.php
     {
         $user = new Users();
 

@@ -5,11 +5,16 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
+<<<<<<< HEAD:src/Entity/Users.php
+class Users implements UserInterface
+=======
 class Users
+>>>>>>> develop:src/Entity/User.php
 {
     /**
      * @var \Ramsey\Uuid\UuidInterface
@@ -34,7 +39,7 @@ class Users
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $roles;
+    private $role;
 
     /**
      * @ORM\Column(type="boolean")
@@ -92,14 +97,14 @@ class Users
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRole(): ?string
     {
-        return $this->roles;
+        return $this->role;
     }
 
-    public function setRoles(string $roles): self
+    public function setRole(string $role): self
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }
@@ -150,5 +155,39 @@ class Users
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    /**
+     * @return array|string[]
+     * @see UserInterface
+     */
+    public function getRoles()
+    {
+        if (empty($roles)) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials()
+    {
+        return null;
     }
 }
