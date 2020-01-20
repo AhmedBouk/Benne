@@ -26,6 +26,9 @@ class DumpsterRepository extends ServiceEntityRepository
         $this->manager = $manager;
     }
 
+    /* ==============
+       Adds Dumpster
+    ================= */
     public function addDumpster($name, $type, $latitude, $longitude, $idCity, $status){
         $dumpster = new Dumpster();
 

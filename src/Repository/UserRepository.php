@@ -2,49 +2,60 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Users|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Users|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Users[]    findAll()
+ * @method Users[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var EntityManagerInterface
+     */
+    private $manager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
     {
-        parent::__construct($registry, User::class);
+        parent::__construct($registry, Users::class);
+        $this->manager = $manager;
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /* =============
+       Adds Users
+    ============== */
+    public function addUser($mail, $password, $role, $token)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $user = new Users();
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        empty($mail) ? true : $user->setmail($mail);
+        empty($password) ? true : $user->setPassword($password);
+        empty($role) ? true : $user->setRoles($role);
+        $user->setIsEnabled(FALSE);
+        empty($token) ? true : $user->setToken($token);
+        $user->setCreatedAt(new \DateTime("now"));
+
+        $this->manager->persist($user);
+        $this->manager->flush();
     }
-    */
+
+
+    /* =============
+       Updates Users
+    ============== */
+
+    /* =============
+       Deletes Users
+    ============== */
+
+    /* ================
+       Lists all users
+    ================ */
+
+
 }

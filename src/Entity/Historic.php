@@ -47,7 +47,7 @@ class Historic
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Users")
      */
     private $id_user;
 
@@ -123,12 +123,12 @@ class Historic
         return $this;
     }
 
-    public function getIdUser(): ?User
+    public function getIdUser(): ?Users
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?User $id_user): self
+    public function setIdUser(?Users $id_user): self
     {
         $this->id_user = $id_user;
 
