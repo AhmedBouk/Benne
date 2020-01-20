@@ -19,7 +19,7 @@ class SecurityController extends AbstractController
         $user = $this->getUser();
 
         return new Response([
-            'email' => $user->getMail(),
+            'mail' => $user->getUsername(),
             'roles' => $user->getRoles(),
         ]);
     }
@@ -35,7 +35,7 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastMail = $authenticationUtils->getLastUsername();
-        return new JsonResponse(['last_mail' => $lastMail, 'error' => $error]);
+        return new JsonResponse(['last_username' => $lastMail, 'error' => $error]);
     }
 
     /**
