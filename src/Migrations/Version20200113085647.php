@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191218123144 extends AbstractMigration
+final class Version20200113085647 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -28,7 +28,7 @@ final class Version20191218123144 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_FC4D6532C6532977 ON collection (id_dumpster_id)');
         $this->addSql('COMMENT ON COLUMN collection.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN collection.id_dumpster_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE dumpster (id UUID NOT NULL, id_city_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, is_enabled BOOLEAN NOT NULL, upload VARCHAR(255) DEFAULT NULL, coordinates geometry(POINT, 0) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE dumpster (id UUID NOT NULL, id_city_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, is_enabled BOOLEAN NOT NULL, uploads VARCHAR(255) DEFAULT NULL, coordinates geography(POINT, 4326) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_4E9832E35531CBDF ON dumpster (id_city_id)');
         $this->addSql('COMMENT ON COLUMN dumpster.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN dumpster.id_city_id IS \'(DC2Type:uuid)\'');
