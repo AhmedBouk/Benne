@@ -9,7 +9,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class Users
 {
     /**
      * @var \Ramsey\Uuid\UuidInterface
