@@ -106,13 +106,31 @@ class DumpsterController extends AbstractController
                     'updated_at' => $dumpster->getUpdatedAt()
                 );
             }
-            $response = new JsonResponse(['status' => $data], Response::HTTP_OK);
-            $response->headers->set('Access-Control-Allow-Origin', '*');
-            return $response;
-        }else{
-            $response = new JsonResponse(['status' => "data empty"], Response::HTTP_OK);
-            $response->headers->set('Access-Control-Allow-Origin', '*');
-            return $response;
+            $bens = "";
+            foreach ($data as $ben) {
+               $bens .= $GeoJsonLine = '
+                    { "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [' . $ben['coordinates'] . ']
+                        },
+                        "properties": {
+                            "Adresse": "' . $ben['name'] . '",
+                            "baptiste": "' . $ben['status'] . '",
+                            "code_com": "' . $ben['id_city'] . '"
+                        }
+                    },';
+            }
+            $bens = substr($bens, 0, -1);
+            $reponse = JsonResponse::fromJsonString('{ "type": "FeatureCollection",
+                "features": ['.$bens.']}');
+            $reponse->headers->set('Access-Control-Allow-Origin', '*');
+            return $reponse;
+
+        } else {
+            $reponse = new JsonResponse(['erreur ' => 'No data'], Response::HTTP_OK);
+            $reponse->headers->set('Access-Control-Allow-Origin', '*');
+            return $reponse;
         }
     }
 
