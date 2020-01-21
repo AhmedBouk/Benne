@@ -15,29 +15,27 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class UsersRepository extends ServiceEntityRepository
 {
+    private $manager;
     public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
     {
         parent::__construct($registry, Users::class);
         $this->manager = $manager;
     }
 
-<<<<<<< HEAD:src/Repository/UserRepository.php
 /* =============
    Adds Users
 ============== */
-=======
 
     /* =============
        Adds Users
     ============== */
->>>>>>> develop:src/Repository/UsersRepository.php
     public function addUser($mail, $password, $role, $token)
     {
         $user = new Users();
 
         empty($mail) ? true : $user->setmail($mail);
         empty($password) ? true : $user->setPassword($password);
-        empty($role) ? true : $user->setRoles($role);
+        empty($role) ? true : $user->setRole($role);
         $user->setIsEnabled(FALSE);
         empty($token) ? true : $user->setToken($token);
         $user->setCreatedAt(new \DateTime("now"));
@@ -60,7 +58,7 @@ class UsersRepository extends ServiceEntityRepository
     {
         empty($data['mail']) ? true : $users->setMail($data['mail']);
         empty($data['password']) ? true : $users->setPassword($data['password']);
-        empty($data['role']) ? true : $users->setRoles($data['role']);
+        empty($data['role']) ? true : $users->setRole($data['role']);
         empty($data['token']) ? true : $users->setToken($data['token']);
         $users->setUpdatedAt(new \DateTime("now"));
         $this->manager->flush();
