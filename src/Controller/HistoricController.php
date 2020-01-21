@@ -19,5 +19,37 @@ class HistoricController extends AbstractController
         $this->historicRepository = $historicRepository;
     }
 
+/* ===========================
+  Adds historic to database
+=========================== */
+    public function addHistoric()
+    {
+
+    }
+
+/* ============================
+  Update historic in database
+============================ */
+    public function updateHistoric()
+    {
+
+    }
+
+/* ==============================
+  Delete historic from database
+============================== */
+    public function deleteHistoric()
+    {
+
+    }
+
+/* ======================================
+  list User's all historics in database
+======================================= */
+    public function listUserHistoric()
+    {
+
+    }
+
 
 }
