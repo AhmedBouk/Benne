@@ -29,7 +29,7 @@ class DumpsterController extends AbstractController
    Adds uploaded JSON File to database
 ====================================== */
     /**
-     * @Route("/add_json", name="add_json", methods={"POST"})
+     * @Route("/add_json", name="add_json, methods={POST}")
      */
     public function addJSON()
     {

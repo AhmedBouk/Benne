@@ -26,9 +26,9 @@ class DumpsterRepository extends ServiceEntityRepository
         $this->manager = $manager;
     }
 
-    /* ==============
-       Adds Dumpster
-    ================= */
+/* ===========================
+   Adds Dumpster to Database
+============================ */
     public function addDumpster($name, $type, $latitude, $longitude, $idCity, $status){
         $dumpster = new Dumpster();
 
@@ -127,33 +127,4 @@ class DumpsterRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
 
     }
-
-    // /**
-    //  * @return Dumpster[] Returns an array of Dumpster objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Dumpster
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

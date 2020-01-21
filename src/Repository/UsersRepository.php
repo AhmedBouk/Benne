@@ -21,10 +21,16 @@ class UsersRepository extends ServiceEntityRepository
         $this->manager = $manager;
     }
 
+<<<<<<< HEAD:src/Repository/UserRepository.php
+/* =============
+   Adds Users
+============== */
+=======
 
     /* =============
        Adds Users
     ============== */
+>>>>>>> develop:src/Repository/UsersRepository.php
     public function addUser($mail, $password, $role, $token)
     {
         $user = new Users();
@@ -41,17 +47,37 @@ class UsersRepository extends ServiceEntityRepository
     }
 
 
-    /* =============
-       Updates Users
-    ============== */
+/* ===============
+   Updates Users
+================ */
+    /**
+     * @param Users $users
+     * @param $data
+     * @return mixed
+     * @throws \Exception
+     */
+    public function updateUser(Users $users, $data)
+    {
+        empty($data['mail']) ? true : $users->setMail($data['mail']);
+        empty($data['password']) ? true : $users->setPassword($data['password']);
+        empty($data['role']) ? true : $users->setRoles($data['role']);
+        empty($data['token']) ? true : $users->setToken($data['token']);
+        $users->setUpdatedAt(new \DateTime("now"));
+        $this->manager->flush();
+    }
 
-    /* =============
-       Deletes Users
-    ============== */
-
-    /* ================
-       Lists all users
-    ================ */
+/* ===============
+   Deletes Users
+================ */
+    /**
+     * @param Users $users
+     * @return mixed
+     */
+    public function deleteUser(Users $users)
+    {
+        $this->manager->remove($users);
+        $this->manager->flush();
+    }
 
 
 }
