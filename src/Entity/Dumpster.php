@@ -47,7 +47,7 @@ class Dumpster
     private $upload;
 
     /**
-     * @ORM\Column(type="geometry", options={"geometry_type"="POINT"})
+     * @ORM\Column(type="geography", options={"geometry_type"="POINT"})
      */
     private $coordinates;
 
@@ -138,12 +138,15 @@ class Dumpster
         return $this;
     }
 
-    public function getCoordinates(): ?array
+    public function getCoordinates()
     {
-        return $this->coordinates;
+        $cooSRID = $this->coordinates;
+        $coo = substr($cooSRID, 16, -1); // remove SRID
+        $gps = str_replace(' ', ', ',$coo); //replace space with coma
+        return $gps;
     }
 
-    public function setCoordinates(array $coordinates): self
+    public function setCoordinates($coordinates): self
     {
         $this->coordinates = $coordinates;
 

@@ -41,7 +41,7 @@ class City
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_enbaled;
+    private $is_enabled;
 
     /**
      * @ORM\Column(type="datetime")
@@ -106,14 +106,14 @@ class City
         return $this;
     }
 
-    public function getIsEnbaled(): ?bool
+    public function getIsEnabled(): ?bool
     {
-        return $this->is_enbaled;
+        return $this->is_enabled;
     }
 
-    public function setIsEnbaled(bool $is_enbaled): self
+    public function setIsEnabled(bool $is_enabled): self
     {
-        $this->is_enbaled = $is_enbaled;
+        $this->is_enabled = $is_enabled;
 
         return $this;
     }
