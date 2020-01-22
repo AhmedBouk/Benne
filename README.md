@@ -19,10 +19,23 @@ Prerequisites for the proper functioning of the application
 Get the project :
 
     git clone git@github.com:AhmedBouk/Benne.git
+    
+Install bundles with composer :
 
-Create an .env.local, add your database URL. It look like this : 
+    composer install
+    
+Generate the SSH keys :
 
-    DATABASE_URL=postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=11&charset=utf8
+    mkdir -p config/jwt 
+    openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 
+    openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+    
+Create an .env.local, add your database URL & your SSH keys configuration. It look like this : 
+
+    DATABASE_URL=postgresql://db_user:db_password@127.0.0.1:5432/db_name?serverVersion=11&charset=utf8 
+    JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem 
+    JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem 
+    JWT_PASSPHRASE=*yourPassphrase*
 
 Launch Symfony with the following command :
 
