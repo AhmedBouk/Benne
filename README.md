@@ -37,6 +37,11 @@ Create an .env.local, add your database URL & your SSH keys configuration. It lo
     JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem 
     JWT_PASSPHRASE=*yourPassphrase*
 
+Create your Postgres database with the following commands:
+
+    php bin/console make:migration
+    php bin/console doctrine:migrations:migrate
+    
 Launch Symfony with the following command :
 
     php -S localhost:8000 -t public
