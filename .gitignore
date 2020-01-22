@@ -179,6 +179,7 @@ $RECYCLE.BIN/
 .idea/composerJson.xml
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
+/config/jwt/
 
 uploads
 uploads/*
