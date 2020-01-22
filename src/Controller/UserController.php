@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,7 +29,7 @@ class UserController extends AbstractController
   Adds user to database
 ======================== */
     /**
-     * @Route ("/add_user", name="add_user", methods={"POST"})
+     * @Route ("/api/add_user", name="add_user", methods={"POST"})
      * @param Request $request
      * @return JsonResponse
      */
