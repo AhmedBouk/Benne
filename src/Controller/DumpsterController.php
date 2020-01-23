@@ -163,7 +163,7 @@ class DumpsterController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }else{
-            $response = new JsonResponse(['status' => "Va niquer ta douce daronne les data sont vides"], Response::HTTP_OK);
+            $response = new JsonResponse(['status' => "no data"], Response::HTTP_OK);
             $response->headers->set('Access-Control-Allow-Origin', '*');
             return $response;
         }
