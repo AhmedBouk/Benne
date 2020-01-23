@@ -167,7 +167,6 @@ class Users implements UserInterface
      */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
         return (string)$this->mail;
     }
 
