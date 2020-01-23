@@ -107,6 +107,7 @@ class DumpsterController extends AbstractController
                 );
             }
             $bens = "";
+            // var_dump($bens);
             foreach ($data as $ben) {
                $bens .= $GeoJsonLine = '
                     { "type": "Feature",
