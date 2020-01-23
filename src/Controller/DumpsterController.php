@@ -111,12 +111,12 @@ class DumpsterController extends AbstractController
                $bens .= $GeoJsonLine = '
                     { "type": "Feature",
                         "geometry": {
-                            "type": "Point",
+                        
                             "coordinates": [' . $ben['coordinates'] . ']
                         },
                         "properties": {
-                            "Adresse": "' . $ben['name'] . '",
-                            "baptiste": "' . $ben['status'] . '",
+                            "rue": "' . $ben['name'] . '",
+                            "type":  "' . $ben['type'] . '",
                             "code_com": "' . $ben['id_city'] . '"
                         }
                     },';
