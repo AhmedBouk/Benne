@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Class DumpsterController
  * @package App\Controller
  *
+ * @Route(path="/dumpster")
  */
 class DumpsterController extends AbstractController
 {
@@ -28,7 +29,7 @@ class DumpsterController extends AbstractController
    Adds uploaded JSON File to database
 ====================================== */
     /**
-     * @Route("/api/add_json", name="add_json, methods={POST}")
+     * @Route("/add_json", name="add_json, methods={POST}")
      */
     public function addJSON()
     {
@@ -85,7 +86,7 @@ class DumpsterController extends AbstractController
    lists all dumpsters from database
  ============================================== */
     /**
-     * @Route ("/api/list", name="list_all_dumpsters", methods={"GET"})
+     * @Route ("/list", name="list_all_dumpsters", methods={"GET"})
      */
     public function listAllDumpsters()
     {
@@ -106,6 +107,7 @@ class DumpsterController extends AbstractController
                 );
             }
             $bens = "";
+            // var_dump($bens);
             foreach ($data as $ben) {
                $bens .= $GeoJsonLine = '
                     { "type": "Feature",
@@ -171,7 +173,7 @@ class DumpsterController extends AbstractController
   Adds dumpster to database
 ============================ */
     /**
-     * @Route ("/api/add_dumpster", name="add_dumpster", methods={"POST"})
+     * @Route ("/add_dumpster", name="add_dumpster", methods={"POST"})
      * @param Request $request
      * @return JsonResponse
      */
@@ -207,7 +209,7 @@ class DumpsterController extends AbstractController
 ============================== */
     /**
      * @param $id
-     * @Route ("/api/delete_dumpster/{id}",  name="delete_dumpster", methods={"DELETE"})
+     * @Route ("/delete_dumpster/{id}",  name="delete_dumpster", methods={"DELETE"})
      * @return JsonResponse
      */
     public function deleteDumpster($id){
@@ -237,7 +239,7 @@ class DumpsterController extends AbstractController
      * @param $id
      * @return JsonResponse
      * @throws \Exception
-     * @Route ("/api/update_dumpster/{id}", name="update_dumpster", methods={"PUT"})
+     * @Route ("/update_dumpster/{id}", name="update_dumpster", methods={"PUT"})
      */
     public function updateDumpster(Request $request, $id){
         if(!is_string($id) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $id) !== 1 )){
@@ -260,5 +262,3 @@ class DumpsterController extends AbstractController
         }
     }
 }
-
-
