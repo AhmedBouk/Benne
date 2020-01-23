@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
  * Class UserController
  * @package App\Controller
  *
- * @Route(path="/user")
  */
 class UserController extends AbstractController
 {
@@ -29,7 +28,7 @@ class UserController extends AbstractController
   Adds user to database
 ======================== */
     /**
-     * @Route ("/add_user", name="add_user", methods={"POST"})
+     * @Route ("/api/add_user", name="add_user", methods={"POST"})
      * @param Request $request
      * @return JsonResponse
      */
