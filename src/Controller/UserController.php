@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,6 +34,7 @@ class UserController extends AbstractController
      * @return JsonResponse
      */
     public function addUser(Request $request){
+
         $data = json_decode($request->getContent(), true);
 
         if(empty($data['mail']) || empty($data['password']) || empty($data['role']) || empty($data['token'])){
