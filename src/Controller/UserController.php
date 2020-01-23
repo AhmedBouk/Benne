@@ -29,11 +29,12 @@ class UserController extends AbstractController
   Adds user to database
 ======================== */
     /**
-     * @Route ("/api/add_user", name="add_user", methods={"POST"})
+     * @Route ("/add_user", name="add_user", methods={"POST"})
      * @param Request $request
      * @return JsonResponse
      */
     public function addUser(Request $request){
+
         $data = json_decode($request->getContent(), true);
 
         if(empty($data['mail']) || empty($data['password']) || empty($data['role']) || empty($data['token'])){

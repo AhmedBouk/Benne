@@ -26,11 +26,11 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
-        #classic:
-           # anonymous: ~
-            #guard:
-                #authenticators:
-                    #- App\Security\LoginFormAuthenticator
+        classic:
+            anonymous: ~
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
             logout:
                 path:   app_logout
 
@@ -40,3 +40,6 @@ security:
     access_control:
     # - { path: ^/admin, roles: ROLE_ADMIN }
     # - { path: ^/profile, roles: ROLE_USER }
+    - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/user/*, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
