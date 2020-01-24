@@ -1,0 +1,36 @@
+doctrine:
+    dbal:
+        driver: 'pdo_pgsql'
+        url: '%env(resolve:DATABASE_URL)%'
+        types:
+            geography:
+                class: 'Jsor\Doctrine\PostGIS\Types\GeographyType'
+                commented: false
+            geometry:
+                class: 'Jsor\Doctrine\PostGIS\Types\GeometryType'
+                commented: false
+            raster:
+                class: 'Jsor\Doctrine\PostGIS\Types\RasterType'
+                commented: false
+            uuid:  'Ramsey\Uuid\Doctrine\UuidType'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '5.7'
+    orm:
+        dql:
+            string_functions:
+                Geography: Jsor\Doctrine\PostGIS\Functions\Geography
+                ST_DWithin: Jsor\Doctrine\PostGIS\Functions\ST_DWithin
+                ST_Point: Jsor\Doctrine\PostGIS\Functions\ST_Point
+                ST_SetSRID: Jsor\Doctrine\PostGIS\Functions\ST_SetSRID
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
